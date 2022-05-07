@@ -59,7 +59,7 @@ class HistoryGeneratorService {
 
     const createPdf = new CreatePdf();
     
-    await historyMessage.forEach(async (item: any) => {
+    historyMessage.forEach(async (item: any) => {
 
       let year = convert.dateYear(item.firstMessageAt);
       let month = convert.dateMonth(item.firstMessageAt);
@@ -85,13 +85,13 @@ class HistoryGeneratorService {
       }
 
       let directory = `../temp/${year}/${month}/${day}/${item.protocol}`;
-      if(item.contactId.slice(0,2) === "em") {
+      if (item.contactId.slice(0, 2) === "em") {
         console.log("Card", item);
         await createPdf.execute(item, directory);
       } else {
         await createPdf.execute(item, directory);
       }
-      
+
     })
 
     console.log("Finalizado Processamento")
