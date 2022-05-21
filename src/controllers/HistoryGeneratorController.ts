@@ -1,5 +1,8 @@
+import { Channel } from "amqplib";
 import { Request, Response} from "express"
-import {HistoryGeneratorService} from "../services/HistoryGeneratorService"
+//import {HistoryGeneratorService} from "../services/HistoryGeneratorService"
+import { sendToQueue } from "../rabbitmq-server copy";
+
 class HistoryGeneratorController {
   /* 
   * Called HistoryGeneratorService
@@ -9,13 +12,14 @@ class HistoryGeneratorController {
   * @return object
   */
   async handle(request: Request, response: Response) {
-    const {companyId, clientKey, dateFrom, dateTo} = request.body;
-
-    const historyGeneratorService = new HistoryGeneratorService();
-
-    const historyGenerate = await historyGeneratorService.execute(companyId, clientKey, dateFrom, dateTo)
+    //const {companyId, clientKey, dateFrom, dateTo} = request.body;
     
-    return response.json(historyGenerate);
+    sendToQueue("myQueue", request.body);
+
+    //const historyGeneratorService = new HistoryGeneratorService();
+    //const historyGenerate = await historyGeneratorService.execute(companyId, clientKey, dateFrom, dateTo)
+    
+    return response.json();
   }
 
 }

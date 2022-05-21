@@ -5,10 +5,10 @@ import {InternalServerError} from "./middlewares/InternalServerError"
 const app = express();
 
 //possibilita app receber body em json
-app.use(express.json())
+app.use(express.json());
 
 //importa middleware de rotas para o app
-app.use(router)
+app.use(router);
 
 // caso as validações retornarem o throw new error, retornará a mensagem de erro do Service
 app.use((error: InternalServerError, request: Request, response: Response, next: NextFunction)=>{
