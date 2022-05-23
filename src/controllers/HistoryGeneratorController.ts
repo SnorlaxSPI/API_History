@@ -1,4 +1,3 @@
-import { Channel } from "amqplib";
 import { Request, Response} from "express"
 //import {HistoryGeneratorService} from "../services/HistoryGeneratorService"
 import { sendToQueue } from "../rabbitmq-server";

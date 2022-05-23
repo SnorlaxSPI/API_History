@@ -5,9 +5,9 @@ import { HistoryGeneratorController } from "../controllers/HistoryGeneratorContr
 
 
 const resolver = (handlerFn: Handler) =>{
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (request: Request, response: Response, next: NextFunction) => {
     try {
-      return await Promise.resolve(handlerFn(req, res, next));
+      return await Promise.resolve(handlerFn(request, response, next));
     } catch (e) {
       return next(e);
     }

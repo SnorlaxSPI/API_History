@@ -95,7 +95,7 @@ class HistoryGeneratorService {
     })
 
     console.log("Finalizado Processamento")
-  
+    
     return historyMessage;
     
    
